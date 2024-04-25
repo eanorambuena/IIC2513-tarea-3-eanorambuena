@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Landing.css';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Landing.css'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import axios from "axios";
-import VITE_BACKEND_URL from "../config";
+import axios from "axios"
+import VITE_BACKEND_URL from "../config"
 
 function Landing() {
-  const [username, setUsername] = useState("");
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [username, setUsername] = useState("")
+  const [error, setError] = useState(null)
+  const navigate = useNavigate()
 
   function onInput(e) {
     setUsername(e.target.value)
-  };
+  }
 
   const handleSubmit = async(e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const config_get = {
       headers: {
@@ -37,14 +37,15 @@ function Landing() {
     }
 
     try {
-      const response_get = await axios(config_get);
-      const user = response_get.data.username;
+      console.log(config_get)
+      const response_get = await axios(config_get)
+      const user = response_get.data.username
       navigate(`/Entries/${user}`)
     }
     catch (error) {
       if (error.response.status === 404) {
         try {
-          const response_post = await axios(config_post); // Post para crear usuario
+          const response_post = await axios(config_post) // Post para crear usuario
           if (response_post.status == 201) {
             const user = response_post.data.username
             navigate(`/Entries/${user}`)
@@ -55,10 +56,10 @@ function Landing() {
         }
       }
       else {
-        setError(`Error ${error.response.status} en GET`);
+        setError(`Error ${error.response.status} en GET`)
       }
     }
-  };
+  }
 
   return (
     <>

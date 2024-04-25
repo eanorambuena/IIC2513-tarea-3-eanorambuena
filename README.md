@@ -12,13 +12,21 @@ Implimenté todas las funcionalidades requeridas en la tarea.
 
 ## Ejecución
 
+Para ejecutar el backend, se deben seguir los siguientes pasos:
 ```
-# Escribe los comandos a ejecutar para correr tu tarea
+cd backend
+sudo service postgresql start
+yarn dev
+```
+
+Para ejecutar el frontend, se deben seguir los siguientes pasos:
+```
+cd frontend
+yarn dev
 ```
 
 ## Postgres
-```
-# Indica los comandos de terminal necesarios para inicializar la base de datos acá
+
 Antes de todo:
 ```bash
 sudo service postgresql start
@@ -34,7 +42,6 @@ sudo -u postgres createuser --superuser username
 3. Como crear la base de datos
 ```bash
 sudo -u postgres createdb db
-sudo -u postgres createdb db_development
 ```
 4. Como crear la clave del usuario
 ```bash
@@ -48,36 +55,50 @@ psql -U username -d db -h 127.0.0.1
 ```
 
 ## Entorno
+
 Una vez creada la base de datos e inicializado psql, se debe crear un archivo `.env`
 
-```
 1. Indica el usuario de la base de datos
+`DB_USERNAME = username`
 2. Indica la contraseña del usuario de la base de datos
+`DB_PASSWORD = password`
 3. Indica el nombre de la base de datos
+`DB_NAME = db`
 4. Indica el host de la base de datos
+`DB_HOST = 127.0.0.1`
 5. Indica el puerto en el que correrá la aplicación
-```
+`DB_PORT = 3000`
+
 ## Sequelize
 
-Deberas indicar los comandos de terminal necesarios para generar los modelos y las migraciones de la base de datos.
+### Inicialización
+```bash
+yarn sequelize-cli db:create --config=src/config/config.js
+```
 
 ### User
+```bash
+yarn sequelize-cli model:generate --name User --attributes username:string
 ```
-```
+
 ### Entry
-```
+```bash
+yarn sequelize-cli model:generate --name Entry --attributes id:integer,title:string,body:string,date:date,belongsTo:string
 ```
 
 ## Migraciones
-```
+```bash
+yarn sequelize-cli db:migrate --config=src/config/config.js
 ```
 
 ### Seeds
-```
+```bash
+yarn sequelize-cli seed:generate --name user
 ```
 
 ## Bibliografia
 ```
 # Coloca aquí la bibliografía
 # Esto incluye el uso de IA, sitios web, etc.
+Usé Github Copilot para autocompletar el código y documentación.
 ```

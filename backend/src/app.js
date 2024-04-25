@@ -19,8 +19,4 @@ app.use(koaBody())
 // koa router
 app.use(router.routes())
 
-app.use((ctx) => {
-    ctx.body = 'Hello world'
-})
-
 module.exports = app
