@@ -19,12 +19,32 @@ Implimenté todas las funcionalidades requeridas en la tarea.
 ## Postgres
 ```
 # Indica los comandos de terminal necesarios para inicializar la base de datos acá
-
+Antes de todo:
+```bash
+sudo service postgresql start
+```
 1. Como inicializar psql
+```bash
+sudo -u postgres psql
+```
 2. Como crear el usuario de postgres
+```bash
+sudo -u postgres createuser --superuser username
+```
 3. Como crear la base de datos
+```bash
+sudo -u postgres createdb db
+sudo -u postgres createdb db_development
+```
 4. Como crear la clave del usuario
+```bash
+sudo -u postgres psql
+ALTER USER username WITH PASSWORD 'password';
+```
 5. Como conectarse a la base de datos
+```bash
+psql -U username -d db -h 127.0.0.1
+# Ingresar la contraseña (password)
 ```
 
 ## Entorno
