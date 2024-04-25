@@ -29,7 +29,7 @@ function Landing() {
 
     const config_post = {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       method: 'post',
       url: `${VITE_BACKEND_URL}users`,
@@ -37,12 +37,12 @@ function Landing() {
     }
 
     try {
-      console.log(config_get)
       const response_get = await axios(config_get)
       const user = response_get.data.username
       navigate(`/Entries/${user}`)
     }
     catch (error) {
+      console.log(error)
       if (error.response.status === 404) {
         try {
           const response_post = await axios(config_post) // Post para crear usuario

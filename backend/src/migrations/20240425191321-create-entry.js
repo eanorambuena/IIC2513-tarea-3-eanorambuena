@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
-      belongsTo: {
+      belongs_to: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
@@ -29,6 +29,14 @@ module.exports = {
           key: 'username'
         },
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      }
     });
   },
   async down(queryInterface, Sequelize) {

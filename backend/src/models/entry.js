@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Entry.belongsTo(models.User, {
-        foreignKey: 'belongsTo',
+        foreignKey: 'belongs_to',
         targetKey: 'username'
       });
     }
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     body: DataTypes.STRING,
     date: DataTypes.DATE,
-    belongsTo: DataTypes.STRING
+    belongs_to: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Entry',

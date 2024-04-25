@@ -67,7 +67,7 @@ Una vez creada la base de datos e inicializado psql, se debe crear un archivo `.
 4. Indica el host de la base de datos
 `DB_HOST = 127.0.0.1`
 5. Indica el puerto en el que correrá la aplicación
-`DB_PORT = 3000`
+`PORT = 8000`
 
 ## Sequelize
 
