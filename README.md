@@ -1,22 +1,20 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/cb5SOAVY)
 # Tarea 3 :construction:
 
-* :pencil2: **Nombre:** Completar nombre
-* :pencil2: **Correo:** Completar correo
+* :pencil2: **Nombre:** Emmanuel Norambuena
+* :pencil2: **Correo:** eanorambuena@uc.cl
 
 ## Código :symbols:
 
 ### :warning: Funcionalidades implementadas y no implementadas
 
-Completar respuesta.
-
+Implimenté todas las funcionalidades requeridas en la tarea.
 
 ## Ejecución
 
 ```
 # Escribe los comandos a ejecutar para correr tu tarea
 ```
-
 
 ## Postgres
 ```
