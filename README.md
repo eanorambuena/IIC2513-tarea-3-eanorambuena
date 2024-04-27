@@ -67,7 +67,7 @@ Una vez creada la base de datos e inicializado psql, se debe crear un archivo `.
 4. Indica el host de la base de datos
 `DB_HOST = 127.0.0.1`
 5. Indica el puerto en el que correrá la aplicación
-`PORT = 8000`
+`PORT = 3000`
 
 ## Sequelize
 
@@ -93,7 +93,9 @@ yarn sequelize-cli db:migrate --config=src/config/config.js
 
 ### Seeds
 ```bash
-yarn sequelize-cli seed:generate --name user
+yarn sequelize-cli seed:generate --name first-users
+yarn sequelize-cli seed:generate --name first-entries
+yarn sequelize-cli db:seed:all --config=src/config/config.js
 ```
 
 ## Bibliografia
