@@ -12,43 +12,62 @@ Implimenté todas las funcionalidades requeridas en la tarea.
 
 ## Ejecución
 
+Si ya está instalado todo, solo se deben iniciar los servidores.
+
+### Iniciar servidores
+
 Para ejecutar el backend, se deben seguir los siguientes pasos:
-```
+```bash
 cd backend
 sudo service postgresql start
 yarn dev
 ```
 
 Para ejecutar el frontend, se deben seguir los siguientes pasos:
-```
+```bash
 cd frontend
 yarn dev
 ```
 
+### Instalación e inicialización
+
+Primero se instala Postgresql y luego se ejecutan los siguientes comandos:
+```bash
+cd frontend
+yarn
+cd ../backend
+yarn
+```
+Luego, se procede a la configuración de Postgresql, el archivo `.env` y Sequelize como se indica en los siguientes apartados en el directorio `backend/`
+
 ## Postgres
 
-Antes de todo:
+Antes de todo, cada vez que se abre la consola por primera vez para trabajar con Postgresql, se debe iniciar el servidor:
 ```bash
 sudo service postgresql start
 ```
-1. Como inicializar psql
+1. Cómo inicializar psql
 ```bash
 sudo -u postgres psql
 ```
-2. Como crear el usuario de postgres
+2. Cómo crear el usuario de postgres
 ```bash
 sudo -u postgres createuser --superuser username
 ```
-3. Como crear la base de datos
+3. Cómo crear la base de datos
 ```bash
 sudo -u postgres createdb db
 ```
-4. Como crear la clave del usuario
+4. Cómo crear la clave del usuario
 ```bash
 sudo -u postgres psql
-ALTER USER username WITH PASSWORD 'password';
 ```
-5. Como conectarse a la base de datos
+Luego, en la consola de psql, se escribe:
+```sql
+ALTER USER username WITH PASSWORD 'password';
+\q
+```
+5. Cómo conectarse a la base de datos
 ```bash
 psql -U username -d db -h 127.0.0.1
 # Ingresar la contraseña (password)
@@ -56,7 +75,7 @@ psql -U username -d db -h 127.0.0.1
 
 ## Entorno
 
-Una vez creada la base de datos e inicializado psql, se debe crear un archivo `.env`
+Una vez creada la base de datos e inicializado psql, se debe crear un archivo `.env` en la raíz del directorio `backend/`, e ingresar los siguientes campos
 
 1. Indica el usuario de la base de datos
 `DB_USERNAME = username`
@@ -99,8 +118,5 @@ yarn sequelize-cli db:seed:all --config=src/config/config.js
 ```
 
 ## Bibliografia
-```
-# Coloca aquí la bibliografía
-# Esto incluye el uso de IA, sitios web, etc.
+
 Usé Github Copilot para autocompletar el código y documentación.
-```
