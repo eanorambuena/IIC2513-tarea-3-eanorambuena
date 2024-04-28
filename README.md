@@ -12,7 +12,18 @@ Implimenté todas las funcionalidades requeridas en la tarea.
 
 ## Ejecución
 
-Si ya está instalado todo, solo se deben iniciar los servidores.
+### Instalación e inicialización
+
+Primero se instala Postgresql y luego se ejecutan los siguientes comandos:
+```bash
+cd frontend
+yarn
+cd ../backend
+yarn
+```
+Luego, se procede a la configuración de Postgresql, el archivo `.env` y Sequelize como se indica en los siguientes apartados en el directorio `backend/`
+
+Si ya está instalado todo, solo se deben iniciar los servidores. Lo más sencillo es abrir dos terminales y ejecutar en una el backend y en la otra el frontend.
 
 ### Iniciar servidores
 
@@ -28,17 +39,6 @@ Para ejecutar el frontend, se deben seguir los siguientes pasos:
 cd frontend
 yarn dev
 ```
-
-### Instalación e inicialización
-
-Primero se instala Postgresql y luego se ejecutan los siguientes comandos:
-```bash
-cd frontend
-yarn
-cd ../backend
-yarn
-```
-Luego, se procede a la configuración de Postgresql, el archivo `.env` y Sequelize como se indica en los siguientes apartados en el directorio `backend/`
 
 ## Postgres
 
@@ -90,30 +90,53 @@ Una vez creada la base de datos e inicializado psql, se debe crear un archivo `.
 
 ## Sequelize
 
-### Inicialización
+Primero debe inicializarse Sequelize en el directorio `backend/` con el siguiente comando, que creará la base de datos de desarrollo `db_development`:
 ```bash
 yarn sequelize-cli db:create --config=src/config/config.js
 ```
 
 ### User
+
+Este comando fue empleado para crear el modelo `User`, no se requiere ejecutarlo nuevamente.
 ```bash
 yarn sequelize-cli model:generate --name User --attributes username:string
 ```
+Luego, se modificó el archivo de migración para eliminar la primaryKey `id` y agregar `username` como primaryKey. También se modificó el archivo de modelo para agregar `username` como primaryKey.
 
 ### Entry
+
+Este comando fue empleado para crear el modelo `Entry`, no se requiere ejecutarlo nuevamente.
 ```bash
 yarn sequelize-cli model:generate --name Entry --attributes id:integer,title:string,body:string,date:date,belongsTo:string
 ```
+Luego, modificó el archivo de migración para agregar `belongsTo` como una foreignKey. También se modificó el archivo de modelo para agregar `belongsTo` como una foreignKey usando el método:
+```javascript
+static associate(models) {
+  Entry.belongsTo(models.User, {
+    foreignKey: 'belongs_to',
+    targetKey: 'username'
+  });
+}
+```
 
 ## Migraciones
+
+Para ejecutar las migraciones, se debe ejecutar el siguiente comando:
 ```bash
 yarn sequelize-cli db:migrate --config=src/config/config.js
 ```
 
 ### Seeds
+
+Para crear los seeds, se debe ejecutó los siguientes comandos. No es necesario ejecutarlos nuevamente.
 ```bash
 yarn sequelize-cli seed:generate --name first-users
 yarn sequelize-cli seed:generate --name first-entries
+```
+Luego, se modificó el archivo de seed para agregar los datos de los usuarios y las entradas.
+
+Para ejecutar los seeds, se debe ejecutar el siguiente comando:
+```bash
 yarn sequelize-cli db:seed:all --config=src/config/config.js
 ```
 
